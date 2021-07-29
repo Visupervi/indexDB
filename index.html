@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="./css/iconfont.css">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+  <style>
+    p {
+      font-size: 18px;
+    }
+
+    p:nth-child(0) {
+      font-family: Microsoft-YaHei;
+    }
+
+    p:nth-child(1) {
+      font-family: KaiTi;
+    }
+
+    p:nth-child(2) {
+      font-family: SimSun;
+    }
+
+    p:nth-child(3) {
+      font-family: SimHei;
+    }
+
+    p:nth-child(4) {
+      font-family: STXingKai;
+    }
+
+    #editor {
+      width: 315px;
+      height: 33px;
+      margin: 0 auto;
+      overflow: hidden;
+      background-size: auto 33px;
+      background-image: url('./css/logos.png');
+      transition: background-position .6s;
+      /* transition: margin-right 4s; */
+    }
+    .wrap{
+      position: relative;
+      max-width: 960px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <p>你好</p>
+  <p>你好</p>
+  <p>你好</p>
+  <p>你好</p>
+  <p>你好</p>
+  <form action="">
+    <input type="week" />
+    <input type="month">
+    <input type="date">
+    <input type="datetime-local">
+  </form>
+
+
+  <!-- Create the editor container -->
+  <div class="wrap">
+    <div id="editor">
+      <!-- <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br></p> -->
+    </div>
+  </div>
+
+
+
+
+  <!-- Include the Quill library -->
+  <!-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> -->
+
+  <!-- Initialize Quill editor -->
+  <!-- <script>
+    var quill = new Quill('#editor', {
+      theme: 'snow'
+    });
+  </script> -->
+  <script src="db.js"></script>
+</body>
+<script>
+  const div = document.querySelector("#editor");
+  window.addEventListener("load", ()=> {
+    let count = 0;
+    setInterval(()=>{
+      count += 135;
+      div.style.backgroundPositionX = "-"+count+"px";
+    },2000)
+
+  })
+
+//   // 测试indexDb
+//   let db = null;
+//   // 创建personData的数据库
+//   const request = window.indexedDB.open("personData", 2);
+//
+//   request.onerror = function(event) {
+//   // 错误处理
+//   console.log(' 打开数据库报错');
+// };
+//
+//  // indexDb打开成功
+//   request.onsuccess = function (event) {
+//   db = event.target.result;
+//   // add();
+//   getData();
+//   console.log('数据库打开成功', db);
+// };
+//
+//   // 创建表
+//   request.onupgradeneeded = function(event) {
+//     console.log("创建表");
+//     db = event.target.result;
+//     let objectStore = null;
+//     if (!db.objectStoreNames.contains('personList')) {
+//       objectStore = db.createObjectStore('personList', {keyPath: 'id' });
+//       // unique name可能会重复
+//       objectStore.createIndex('name', 'name', { unique: false });
+//       objectStore.createIndex('email', 'email', { unique: true });
+//     }
+//   }
+//
+// function add() {
+//   console.log("db", db);
+//   var request = db.transaction(['personList'], 'readwrite')
+//     .objectStore('personList')
+//     .add({ id: 1, name: '张三', age: 24, email: 'zhangsan@example.com' });
+//
+//   request.onsuccess = function (event) {
+//     console.log('数据写入成功');
+//   };
+//
+//   request.onerror = function (event) {
+//     console.log('数据写入失败');
+//   }
+// }
+//
+// function getData(tableName, key) {
+//   let transaction = db.transaction(["personList"]);
+//   let objectStore = transaction.objectStore("personList");
+//   let request = objectStore.get(1);
+//   console.log("result", request);
+//   request.onerror = function (event) {
+//     // 错误处理!
+//   };
+//   request.onsuccess = function (event) {
+//     // 对 request.result 做些操作！
+//     alert("Name for SSN 1 is " );
+//   };
+// }
+  isSupportIndexDB();
+</script>
+
+</html>
